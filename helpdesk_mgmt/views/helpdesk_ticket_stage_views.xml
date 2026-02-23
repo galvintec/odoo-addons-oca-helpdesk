@@ -13,7 +13,7 @@
                 <separator />
                 <field name="name" filter_domain="[('name', 'ilike', self)]" />
                 <field name="company_id" groups="base.group_multi_company" />
-                <field name="team_ids" />
+                <!--   <field name="team_ids" /> -->
                 <group>
                     <filter
                         string="Company"
@@ -48,7 +48,7 @@
                     <group name="main">
                         <group name="main_left">
                             <field name="mail_template_id" />
-                            <field name="team_ids" widget="many2many_tags" />
+                            <!-- <field name="team_ids" widget="many2many_tags" /> -->
                             <field
                                 name="company_id"
                                 groups="base.group_multi_company"

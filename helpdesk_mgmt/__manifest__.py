@@ -4,10 +4,11 @@
     "name": "Helpdesk Management",
     "summary": """
         Helpdesk""",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "license": "AGPL-3",
     "category": "After-Sales",
-    "author": "AdaptiveCity, "
+    "author": "Galvintec, "
+    "AdaptiveCity, "
     "Tecnativa, "
     "ForgeFlow, "
     "C2i Change 2 Improve, "

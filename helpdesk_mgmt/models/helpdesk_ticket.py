@@ -1,5 +1,4 @@
 from odoo import api, fields, models, tools
-from odoo.exceptions import AccessError
 
 
 class HelpdeskTicket(models.Model):
@@ -370,9 +369,10 @@ class HelpdeskTicket(models.Model):
         self.message_subscribe(partner_ids)
         return super().message_update(msg, update_vals=update_vals)
 
-    def _message_get_suggested_recipients(self):
+    def _message_get_suggested_recipients(self, reply_discussion=True, no_create=True):
         recipients = super()._message_get_suggested_recipients()
-        try:
+
+        """ try:
             for ticket in self:
                 if ticket.partner_id:
                     ticket._message_add_suggested_recipient(
@@ -389,10 +389,11 @@ class HelpdeskTicket(models.Model):
         except AccessError:
             # no read access rights -> just ignore suggested recipients because this
             # imply modifying followers
-            return recipients
+            return recipients """
+
         return recipients
 
-    def _notify_get_reply_to(self, default=None):
+    def _notify_get_reply_to(self, default=None, author_id=None):
         """Override to set alias of tasks to their team if any."""
         aliases = self.sudo().mapped("team_id")._notify_get_reply_to(default=default)
         res = {ticket.id: aliases.get(ticket.team_id.id) for ticket in self}

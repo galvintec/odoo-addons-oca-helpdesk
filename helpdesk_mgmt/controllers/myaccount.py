@@ -6,7 +6,7 @@ from operator import itemgetter
 from odoo import http
 from odoo.exceptions import AccessError, MissingError
 from odoo.http import request
-from odoo.fields import Domain
+from odoo.osv.expression import AND, OR
 from odoo.tools import groupby as groupbyelem
 
 from odoo.addons.portal.controllers.portal import CustomerPortal
@@ -97,7 +97,7 @@ class CustomerPortalHelpdesk(CustomerPortal):
         if search:
             domain += self._ticket_get_search_domain(search_in, search)
 
-        domain = Domain.AND(
+        domain = AND(
             [
                 domain,
                 request.env["ir.rule"]._compute_domain(HelpdeskTicket._name, "read"),
@@ -254,7 +254,7 @@ class CustomerPortalHelpdesk(CustomerPortal):
             search_domain.append([("number", "ilike", search)])
         if search_in in ("name", "all"):
             search_domain.append([("name", "ilike", search)])
-        return Domain.OR(search_domain)
+        return OR(search_domain)
 
     def _ticket_get_groupby_mapping(self):
         return {

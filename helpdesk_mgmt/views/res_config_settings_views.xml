@@ -11,7 +11,7 @@
                     name="helpdesk_mgmt"
                     groups="helpdesk_mgmt.group_helpdesk_manager"
                 >
-                    <block
+                    <!-- <block
                         title="New ticket form (portal)"
                         name="helpdesk_mgmt_portal_new_ticket_fields"
                     >
@@ -67,7 +67,7 @@
                                 </div>
                             </div>
                         </setting>
-                    </block>
+                    </block> -->
                     <block title="Duplicate tracking">
                         <setting>
                             <field
@@ -113,7 +113,7 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
-        <field name="target">inline</field>
+        <field name="target">current</field>
         <field name="context">{'module' : 'helpdesk_mgmt', 'bin_size': False}</field>
     </record>
 </odoo>
